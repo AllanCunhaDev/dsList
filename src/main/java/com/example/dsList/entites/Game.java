@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_games")
+@Table(name = "tb_game")
 public class Game {
 
     @Id
@@ -20,22 +20,28 @@ public class Game {
     private Integer year;
     private String genre;
     private String platforms;
-    private String imgURL;
+    private Double score;
+    private String imgUrl;
+
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
-    public Game(){
+    public Game() {
 
     }
 
-    public Game(Long id, String title, Integer year, String genre, String platforms, String imgURL,
-            String shortDescription, String longDescription) {    
+    public Game(Long id, String title, Integer year, String genre, Double score, String platforms, String imgUrl,
+            String shortDescription, String longDescription) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.genre = genre;
         this.platforms = platforms;
-        this.imgURL = imgURL;
+        this.score = score;
+        this.imgUrl = imgUrl;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
     }
@@ -80,12 +86,20 @@ public class Game {
         this.platforms = platforms;
     }
 
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
     public String getImgURL() {
-        return imgURL;
+        return imgUrl;
     }
 
     public void setImgURL(String imgURL) {
-        this.imgURL = imgURL;
+        this.imgUrl = imgURL;
     }
 
     public String getShortDescription() {
@@ -128,6 +142,5 @@ public class Game {
             return false;
         return true;
     }
-    
 
 }
